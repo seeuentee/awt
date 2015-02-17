@@ -251,14 +251,14 @@
 
       @media (max-width: 650px) {
 
-      input {
-        margin: 2em auto 1em;
+        input {
+          margin: 2em auto 1em;
 
-      }
+        }
 
-      label {
-        padding:1em 0 0;
-      }
+        label {
+          padding:1em 0 0;
+        }
 
         #github-links a {
           left: 0;
@@ -429,11 +429,24 @@
         <div class="section">
           <h2>Styling</h2>
           <ul>
-            <li><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">SASS</a></li>
-            <li><a href="http://compass-style.org/reference/compass/">Compass</a></li>
-            <li><a href="http://bourbon.io/docs/">Bourbon</a></li>
+            <li><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">SASS</a>
+              <ul>
+                <li><a href="http://compass-style.org/reference/compass/">Compass</a></li>
+                <li><a href="http://bourbon.io/docs/">Bourbon</a></li>
+              </ul></li>
+            <li><a href="http://lesscss.org/features/">LESS</a></li>
           </ul>
         </div>
+
+        <div class="section">
+          <h2>Database</h2>
+          <ul>
+            <li><a href="http://dev.mysql.com/doc/">MySQL</a></li>
+            <li><a href="http://docs.mongodb.org/manual/">mongoDB</a></li>
+            <li><a href="http://www.postgresql.org/docs/">PostgreSQL</a></li>
+          </ul>
+        </div>
+
         <div class="section">
           <h2>Etc.</h2>
           <ul>
@@ -460,31 +473,35 @@
         (function domaintools() {
           var v = $('#domaintools');
           var a = v.find('a');
-
+          updatelink();
+          v.on('keyup', function (e) {
+            if (e.which == 13) {
+              e.preventDefault();
+            }
+          });
           a.each(function () {
             var t = $(this);
             t.attr('data-link', t.attr('href'))
           });
-          updatelink();
-          v.on('keyup', updatelink);
-
-          function updatelink() {
+          function updatelink(e) {
             a.each(function () {
               var olink = $(this).attr('data-link');
               var nlink = olink + v.find('input').val();
-
               $(this).attr('href', nlink);
             });
           }
         })();
-
         (function ui() {
           $('input').on('focus', function () {
             $(this).val('');
           });
-          console.log(print_r($('.section h2')));
-          $('#nav ul').append('<li>' + $('.section h2') + '</li>');
-
+          // $('#nav ul').append('<li>' + $('.section').find('h2') + '</li>');
+          $('.aside.tab').each(function () {
+            var t = $(this);
+            var title = t.find(' > h2').html();
+            // console.log(title);
+            $('#nav').find('ul').append('<li>' + title + '</li>');
+          });
         })();
 
       })(jQuery);
