@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Adam's Web Tools</title>
     <style>
       html, body {
@@ -260,7 +261,7 @@
 
       <div id="github-links">
         <a href="https://github.com/ablank/awt">
-        <i class="fa fa-github"></i>Fork me on GitHub
+          <i class="fa fa-github"></i>Fork me on GitHub
         </a>
         <span></span>
         <!--
@@ -418,25 +419,17 @@
           <h2>Etc.</h2>
           <ul>
             <li><a href="http://ruby-doc.org/core-2.2.0/">Ruby</a>
-<ul>
-        <li><a href="http://api.rubyonrails.org/">Rails</a></li>
+              <ul>
+                <li><a href="http://api.rubyonrails.org/">Rails</a></li>
               </ul>
             </li>
             <li><a href="https://docs.python.org/2/library/">Python</a>
-<ul>
-        <li><a href="https://docs.djangoproject.com/en/1.7/">Django</a></li>
+              <ul>
+                <li><a href="https://docs.djangoproject.com/en/1.7/">Django</a></li>
               </ul>
             </li>
           </ul>
         </div>
-      </div>
-
-
-      <div id="fontstacks" class="itool">
-        <p class="font"
-           data-style="&quot;Lucida Bright&quot;, Georgia, serif;">
-          Lucida Bright
-        </p>
       </div>
 
     </div>
@@ -475,25 +468,7 @@
 
         })();
 
-        (function fontstacks() {
-          var p = $('.font');
-          $('.font').each(function () {
-            var t = $(this);
-            var stack = t.attr('data-style');
-            t.css("font-family", stack)
-              .after('<p>font-family: ' + stack + '</p>');
-          });
-
-          //$('.itool').hide();
-          $('a').attr('href^=#').click(function (e) {
-            e.preventDefault();
-            var t = $(this);
-            var l = t.attr('href').slice(1);
-
-            alert();
-          });
-        })();
-      })(jQuery)
+      })(jQuery);
     </script>
   </body>
 </html>
