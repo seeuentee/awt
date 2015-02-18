@@ -64,14 +64,23 @@
       }
 
       input {
-        width:60%;
+        display: inline;
         font-size:1.2em;
-        margin: 3em auto 2em;
-        padding:.6em .8em;
         border-radius: .4em;
-        box-shadow: 0 0 .4em .4em #555;
-
+        padding:.6em .8em;
       }
+
+      input[type=text] {
+        width:60%;
+        margin: 3em auto 2em;
+        box-shadow: 0 0 .4em .4em #555;
+      }
+
+      input[type=submit] {
+        width:5em;
+        cursor: pointer;
+      }
+
 
       label {
         display:block;
@@ -86,21 +95,34 @@
       }
 
       #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
         color: #ccc;
+        background-color: #222;
+        border-bottom: #111 .2em solid;
       }
 
       #nav ul,
       #nav li {
         margin: 0;
         padding: 0;
+        float: left;
       }
 
       #nav a {
         display: block;
-        color: #FFF;
+        margin: .2em;
+        padding: .4em;
       }
 
-      #nav small {
+      #header {
+        margin-top: 3em;
+      }
+
+      #header small {
         position: relative;
         display: block;
         padding: .1em 1em;
@@ -108,63 +130,15 @@
         color: #555;
       }
 
-      #github-links {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 10;
-        width: 10em;
-        text-align: right;
-        padding: 1em;
-      }
-
-      #github-links > span {
-        position: absolute;
-        display: inline-block;
-        width: 0;
-        height: 0;
-        line-height: 0;
-        border: 5em solid transparent;
-        border-right: 5em solid rgba(0, 50, 200, 0.5);
-        border-top: 5em solid rgba(0, 50, 200, 0.5);
-        right: 0;
-        top: 0;
-        transition: all 400ms;
-      }
-
-      #github-links:focus > span,
-      #github-links:hover > span,
-      #github-links:active > span {
-        border-right: 5em solid rgba(0, 50, 200, 0.9);
-        border-top: 5em solid rgba(0, 50, 200, 0.9);
-      }
-
-      #github-links a {
-        left: 3em;
-        top: 0;
-        text-align: center;
-        text-decoration: none;
-        transform: rotate(45deg);
-        z-index: 2;
-        color: rgba(250, 250, 255, 0.5);
-      }
-
-      #github-links i {
-        display: block;
-        font-size: 3em;
-        margin: 0;
-        padding: 0;
-      }
-
-      #github-links:focus > a,
-      #github-links:hover > a,
-      #github-links:active > a {
-        color: #FFF;
-      }
-
       #content {
         text-align:center;
         background-color:rgba(0,0,0,0.8);
+      }
+
+      #search input[type=submit] {
+        background-image: url("//ssl.gstatic.com/gb/images/i1_71651352.png");
+        background-size: 356px 144px;
+        background-position: -56px -35px;
       }
 
       .aside {
@@ -206,9 +180,12 @@
       }
 
       .section.main {
-
         width:100%;
         max-width:none;
+      }
+
+      .section.main input {
+        display: block;
       }
 
       .section.main ul {
@@ -249,19 +226,65 @@
         padding:0;
       }
 
+
+      #github-links {
+        position: absolute;
+        top: -3em;
+        right: 0;
+        z-index: 10;
+        width: 10em;
+        text-align: right;
+        padding: 1em;
+      }
+
+      #github-links > span {
+        position: absolute;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        line-height: 0;
+        border: 5em solid transparent;
+        border-right: 5em solid rgba(0, 50, 200, 0.7);
+        border-top: 5em solid rgba(0, 50, 200, 0.7);
+        right: 0;
+        top: 0;
+        transition: all 400ms;
+      }
+
+      #github-links:focus > span,
+      #github-links:hover > span,
+      #github-links:active > span {
+        border-right: 5em solid rgba(0, 50, 200, 0.9);
+        border-top: 5em solid rgba(0, 50, 200, 0.9);
+      }
+
+      #github-links a {
+        left: 3em;
+        top: 0;
+        text-align: center;
+        text-decoration: none;
+        transform: rotate(45deg);
+        z-index: 2;
+        color: rgba(250, 250, 255, 0.5);
+      }
+
+      #github-links i {
+        display: block;
+        font-size: 3em;
+        margin: 0;
+        padding: 0;
+      }
+
+      #github-links:focus > a,
+      #github-links:hover > a,
+      #github-links:active > a {
+        color: #FFF;
+      }
+
       @media (max-width: 650px) {
-
-        input {
-          margin: 2em auto 1em;
-
-        }
 
         label {
           padding:1em 0 0;
-        }
-
-        #github-links a {
-          left: 0;
         }
 
       }
@@ -271,11 +294,14 @@
 
   </head>
   <body>
-    <div id="nav">
 
+    <div id="nav">
+      <ul></ul>
+    </div>
+
+    <div id="header">
       <h1>AWT</h1>
       <small>Adam&#39;s Web Tools</small>
-
       <div id="github-links">
         <a href="https://github.com/ablank/awt">
           <i class="fa fa-github"></i>Fork me on GitHub
@@ -290,27 +316,42 @@
         -->
       </div>
     </div>
-    <div id="content">
-      <div class="section main">
-        <form id="domaintools">
-          <label for="checkurl">Enter a domain to test...</label>
-          <input id="checkurl" type="text" value="www.foo.com" size="64" />
-          <label for="tests">...and select a test to run</label>
-          <ul id="tests">
-            <li><a href="https://domains.google.com/registrar?s="><i class="fa fa-power-off"></i>Domain Availability</a></li>
-            <li><a href="http://validator.w3.org/check?uri="><i class="fa fa-html5"></i>Validate HTML</a></li>
-            <li><a href="https://jigsaw.w3.org/css-validator/validator?uri="><i class="fa fa-css3"></i>Validate CSS</a></li>
-            <li><a href="http://www.google.com/webmasters/tools/richsnippets?q="><i class="fa fa-bullseye"></i>Rich Snippets</a></li>
-            <li><a href="https://developers.google.com/speed/pagespeed/insights/?url="><i class="fa fa-bolt"></i>PageSpeed</a></li>
-            <li><a href="https://moz.com/researchtools/ose/links?site="><i class="fa fa-link"></i>Open Site Explorer</a></li>
 
-          </ul>
+    <div id="content">
+
+      <div id="search" class="aside tab">
+        <h2><a href="#search"><i class="fa fa-search"></i>Search</a></h2>
+        <form method="get" action="http://www.google.com/search">
+          <img src="http://developers.google.com/_static/images/v2/developers-logo.png">
+          <input type="text"   name="q" size="25" maxlength="255" value="Search Term" />
+          <input type="submit" value="Search" />
         </form>
       </div>
 
+      <div id="test" class="aside tab">
+        <h2><a href="#test"><i class="fa fa-cogs"></i>Tests</a></h2>
 
-      <div class="aside">
-        <h2>Other tools</h2>
+        <div class="section main">
+          <form id="domaintools">
+            <label for="checkurl">Enter a domain to test...</label>
+            <input id="checkurl" type="text" value="www.foo.com" size="64" />
+            <label for="tests">...and select a test to run</label>
+            <ul id="tests">
+              <li><a href="https://domains.google.com/registrar?s="><i class="fa fa-power-off"></i>Domain Availability</a></li>
+              <li><a href="http://validator.w3.org/check?uri="><i class="fa fa-html5"></i>Validate HTML</a></li>
+              <li><a href="https://jigsaw.w3.org/css-validator/validator?uri="><i class="fa fa-css3"></i>Validate CSS</a></li>
+              <li><a href="http://www.google.com/webmasters/tools/richsnippets?q="><i class="fa fa-bullseye"></i>Rich Snippets</a></li>
+              <li><a href="https://developers.google.com/speed/pagespeed/insights/?url="><i class="fa fa-bolt"></i>PageSpeed</a></li>
+              <li><a href="https://moz.com/researchtools/ose/links?site="><i class="fa fa-link"></i>Open Site Explorer</a></li>
+
+            </ul>
+          </form>
+        </div>
+      </div>
+
+
+      <div id="tools" class="aside tab">
+        <h2><a href="#tools"><i class="fa fa-wrench"></i>Tools</a></h2>
 
 
         <div class="section">
@@ -372,8 +413,8 @@
         </div>
       </div>
 
-      <div class="aside">
-        <h2><i class="fa fa-book"></i>Reference</h2>
+      <div id="reference" class="aside tab">
+        <h2><a href="#reference"><i class="fa fa-book"></i>Reference</a></h2>
 
         <div class="section">
           <h2><i class="fa fa-cogs"></i></h2>
@@ -464,44 +505,53 @@
         </div>
       </div>
 
+      <div id="inspiration" class="aside tab">
+        <h2><a href="#inspiration"><i class="fa fa-eye"></i>Inspiration</a></h2>
+        
+      </div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
       (function ($) {
 
-        (function domaintools() {
-          var v = $('#domaintools');
-          var a = v.find('a');
-          updatelink();
-          v.on('keyup', function (e) {
-            if (e.which == 13) {
-              e.preventDefault();
-            }
-          });
-          a.each(function () {
-            var t = $(this);
-            t.attr('data-link', t.attr('href'))
-          });
-          function updatelink(e) {
-            a.each(function () {
-              var olink = $(this).attr('data-link');
-              var nlink = olink + v.find('input').val();
-              $(this).attr('href', nlink);
-            });
-          }
-        })();
         (function ui() {
-          $('input').on('focus', function () {
-            $(this).val('');
+          $('input[type=text]').on('focus', function () {
+            if (this.value == this.defaultValue) {
+              this.value = '';
+            }
           });
           // $('#nav ul').append('<li>' + $('.section').find('h2') + '</li>');
           $('.aside.tab').each(function () {
             var t = $(this);
-            var title = t.find(' > h2').html();
-            // console.log(title);
-            $('#nav').find('ul').append('<li>' + title + '</li>');
+            var title = t.find(' > h2');
+
+            $('#nav').find('ul').append('<li>' + title.html() + '</li>');
+            title.find('i').unwrap();
           });
+        })();
+
+        (function domaintools() {
+          var v = $('#domaintools');
+          var a = v.find('a');
+
+          a.each(function () {
+            $(this).data('link', $(this).attr('href'));
+          });
+
+          updatelink();
+          v.find('input').on('keyup', updatelink);
+
+          function updatelink() {
+            a.each(function () {
+              var blink = $(this).data('link');
+              var url = v.find('input').val();
+
+              $(this).attr('href', blink + url);
+
+            });
+          }
         })();
 
       })(jQuery);
