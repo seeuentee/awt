@@ -306,12 +306,12 @@
           left: 0;
         }
 
-      .section.main a {
-        width: 9em;
-        height: 4em;
-        margin: .4em;
-        padding:.4em;
-      }
+        .section.main a {
+          width: 9em;
+          height: 4em;
+          margin: .4em;
+          padding:.4em;
+        }
 
       }
     </style>
@@ -542,6 +542,14 @@
 
         <div class="section">
           <ul>
+            <li><a href="http://addyosmani.com/blog/">Addy Osmani</a></li>
+            <li><a href="http://davidwalsh.name/">David Walsh</a></li>
+            <li><a href="http://www.lukew.com/ff/">Luke Wroblewski</a></li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <ul>
             <li><a href="http://alistapart.com/">A List Apart</a></li>
             <li><a href="http://tympanus.net/codrops/">Codrops</a></li>
             <li><a href="https://scotch.io">Scotch</a></li>
@@ -561,58 +569,50 @@
           </ul>
         </div>
 
-        <div class="section">
-          <ul>
-            <li><a href="http://addyosmani.com/blog/">Addy Osmani</a></li>
-            <li><a href="http://davidwalsh.name/">David Walsh</a></li>
-            <li><a href="http://www.lukew.com/ff/">Luke Wroblewski</a></li>
-          </ul>
-        </div>
-
       </div>
 
       <!-- /#content -->
     </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script>
-    (function ($) {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      (function ($) {
 
-      (function ui() {
-        $('input[type=text]').on('focus', function () {
-          if (this.value == this.defaultValue) {
-            this.value = '';
-          }
-        });
-        // $('#nav ul').append('<li>' + $('.section').find('h2') + '</li>');
-        $('.aside.tab').each(function () {
-          var title = $(this).find(' > h2');
-          $('#nav').find('ul').append('<li>' + title.html() + '</li>');
-          title.find('i').unwrap();
-        });
-      })();
-
-      (function domaintools() {
-        var v = $('#domaintools');
-        var a = v.find('a');
-
-        a.each(function () {
-          $(this).data('link', $(this).attr('href'));
-        });
-
-        updatelink();
-        v.find('input').on('keyup', updatelink);
-
-        function updatelink() {
-          a.each(function () {
-            var blink = $(this).data('link');
-            var url = v.find('input').val();
-
-            $(this).attr('href', blink + url);
+        (function ui() {
+          $('input[type=text]').on('focus', function () {
+            if (this.value == this.defaultValue) {
+              this.value = '';
+            }
           });
-        }
-      })();
+          // $('#nav ul').append('<li>' + $('.section').find('h2') + '</li>');
+          $('.aside.tab').each(function () {
+            var title = $(this).find(' > h2');
+            $('#nav').find('ul').append('<li>' + title.html() + '</li>');
+            title.find('i').unwrap();
+          });
+        })();
 
-    })(jQuery);
-  </script>
-</body>
+        (function domaintools() {
+          var v = $('#domaintools');
+          var a = v.find('a');
+
+          a.each(function () {
+            $(this).data('link', $(this).attr('href'));
+          });
+
+          updatelink();
+          v.find('input').on('keyup', updatelink);
+
+          function updatelink() {
+            a.each(function () {
+              var blink = $(this).data('link');
+              var url = v.find('input').val();
+
+              $(this).attr('href', blink + url);
+            });
+          }
+        })();
+
+      })(jQuery);
+    </script>
+  </body>
 </html>
