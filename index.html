@@ -6,7 +6,7 @@
     <title>Adam's Web Tools</title>
 
     <style>
-      @font-face {
+@font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
@@ -60,7 +60,7 @@ h1, h2, h3 {
   text-align: left;
   padding: .4em .8em;
   color: #FEFEFE;
-  background-color: #112;
+  background-color: rgba(17, 17, 34, 0.8);
   font-family: 'Lato';
 }
 
@@ -268,10 +268,10 @@ input[type=submit]:hover,
 
   .sub {
     padding: 0;
-    width: 49%;
+    width: 33%;
     min-width: 10em;
     max-width: 20em;
-    margin-bottom: 1em;
+    margin: 0 auto 10px;
     border-left: .2em solid;
   }
   .sub a {
@@ -285,6 +285,7 @@ input[type=submit]:hover,
     font-size: 1.4em;
   }
 }
+
     </style>
 
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -556,6 +557,7 @@ input[type=submit]:hover,
 
           $('.masonry').masonry({
             columnWidth: 200,
+           // gutter: 10,
             itemSelector: '.sub',
             isFitWidth: true
           });
