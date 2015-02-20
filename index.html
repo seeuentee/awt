@@ -55,20 +55,25 @@ div, input, ul, li, h1, h2, h3, p, a, i {
 h1, h2, h3 {
   display: block;
   clear: both;
-  font-weight: lighter;
+  font-weight: bold;
   text-align: left;
-  padding: .4em .8em;
-  color: #FEFEFE;
-  background-color: rgba(17, 17, 34, 0.8);
   font-family: 'Lato';
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 3em;
+  margin: 0 0 .2em;
+  padding: 1em .5em .2em;
+  color: #a8a8bd;
+  background-color: rgba(17, 17, 34, 0.7);
+  box-shadow: 0 0.1em 0.1em 0 rgba(17, 17, 34, 0.6);
 }
 
 h3 {
-  font-size: 1.1em;
+  font-size: 1.5em;
+  padding: .4em .8em;
+  color: rgba(17, 17, 34, 0.5);
+  background-color: #a8a8bd;
 }
 
 p {
@@ -171,11 +176,6 @@ i {
   max-width: none;
   padding: 0 0 2em;
 }
-.main > h2 {
-  margin: 0 0 1em;
-  padding: 2.4em .5em .2em;
-  background-color: rgba(17, 17, 34, 0.5);
-}
 
 .sub {
   width: 25%;
@@ -250,8 +250,14 @@ input[type=submit]:hover,
 }
 
 @media (max-width: 650px) {
-  section a {
-    padding: .6em;
+  h2 {
+    font-size: 2.4em;
+    padding: 1em .2em .2em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    padding: .4em .6em;
   }
 
   input[type=text] {
@@ -288,6 +294,7 @@ input[type=submit]:hover,
     font-size: 1.4em;
   }
 }
+
     </style>
 
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -339,7 +346,7 @@ input[type=submit]:hover,
         <h2><a href="#tools"><i class="fa fa-wrench"></i>Tools</a></h2>
 
         <section class="sub">
-          <h2><i class="fa fa-picture-o"></i>Images</h2>
+          <h3><i class="fa fa-picture-o"></i>Images</h3>
           <ul>
             <li><a href="http://www.favicon-generator.org/">Favicon Generator</a></li>
             <li><a href="http://fortawesome.github.io/Font-Awesome/">Font-Awesome</a></li>
@@ -351,7 +358,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2><i class="fa fa-paint-brush"></i>Design</h2>
+          <h3><i class="fa fa-paint-brush"></i>Design</h3>
           <ul>
             <li><a href="http://css3please.com/">CSS3, Please</a></li>
             <li><a href="https://color.adobe.com/explore/most-popular/">Kuler</a></li>
@@ -359,7 +366,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2><i class="fa fa-font"></i>Typography</h2>
+          <h3><i class="fa fa-font"></i>Typography</h3>
           <ul>
             <li><a href="http://www.cssfontstack.com/" class="itool">CSS Font Stack</a></li>
             <li><a href="http://www.google.com/fonts/">Google Fonts</a></li>
@@ -368,7 +375,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2><i class="fa fa-terminal"></i>Javascript</h2>
+          <h3><i class="fa fa-terminal"></i>Javascript</h3>
           <ul>
             <li><a href="http://closure-compiler.appspot.com/">Closure Compiler</a></li>
             <li><a href="http://jsfiddle.net/">JS Fiddle</a></li>
@@ -384,14 +391,14 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2><i class="fa fa-check"></i>Testing</h2>
+          <h3><i class="fa fa-check"></i>Testing</h3>
           <ul>
             <li><a href="http://browsershots.org/">Browser Shots</a></li>
           </ul>
         </section>
 
         <section class="sub">
-          <h2><i class="fa fa-search"></i>SEO</h2>
+          <h3><i class="fa fa-search"></i>SEO</h3>
           <ul>
             <li><a href="https://adwords.google.com/ko/KeywordPlanner">Google Keyword Planner</a></li>
             <li><a href="http://keywordtool.io/">Keyword Tool</a></li>
@@ -403,7 +410,7 @@ input[type=submit]:hover,
         <h2><a href="#reference"><i class="fa fa-book"></i>Reference</a></h2>
 
         <section class="sub">
-          <h2><i class="fa fa-cogs"></i></h2>
+          <h3><i class="fa fa-cogs"></i></h3>
           <ul>
             <li><a href="https://developer.mozilla.org/en-US/">Mozilla Developer Network</a></li>
             <li><a href="https://msdn.microsoft.com/en-us/library/">Microsoft Developer Network</a></li>
@@ -417,7 +424,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2>PHP</h2>
+          <h3>PHP</h3>
           <ul>
             <li><a href="http://php.net/manual/en/funcref.php">PHP</a></li>
           </ul>
@@ -433,7 +440,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2>Javascript</h2>
+          <h3>Javascript</h3>
           <ul>
             <li><a href="http://api.jquery.com/">jQuery</a></li>
             <li><a href="http://api.jqueryui.com/">jQuery-ui</a></li>
@@ -454,7 +461,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2>Styling</h2>
+          <h3>Styling</h3>
           <ul>
             <li><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">SASS</a>
               <ul>
@@ -466,7 +473,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2>Database</h2>
+          <h3>Database</h3>
           <ul>
             <li><a href="http://dev.mysql.com/doc/">MySQL</a></li>
             <li><a href="http://docs.mongodb.org/manual/">mongoDB</a></li>
@@ -475,7 +482,7 @@ input[type=submit]:hover,
         </section>
 
         <section class="sub">
-          <h2>Etc.</h2>
+          <h3>Etc.</h3>
           <ul>
             <li><a href="http://ruby-doc.org/core-2.2.0/">Ruby</a>
               <ul>
