@@ -1,711 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Adam's Web Tools</title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adam's Web Tools</title>
 
-	<style>
-		@font-face {
-			font-family: 'Lato';
-			font-style: normal;
-			font-weight: 700;
-			src: local("Lato Bold"), local("Lato-Bold"), url(http://fonts.gstatic.com/s/lato/v11/H2DMvhDLycM56KNuAtbJYA.woff2) format("woff2"), url(http://fonts.gstatic.com/s/lato/v11/wkfQbvfT_02e2IWO3yYueQ.woff) format("woff");
-		}
-		
-		@font-face {
-			font-family: 'Roboto';
-			font-style: normal;
-			font-weight: 400;
-			src: local("Roboto"), local("Roboto-Regular"), url(http://fonts.gstatic.com/s/roboto/v15/CWB0XYA8bzo0kSThX0UTuA.woff2) format("woff2"), url(http://fonts.gstatic.com/s/roboto/v15/2UX7WLTfW3W8TclTUvlFyQ.woff) format("woff");
-		}
-		
-		@font-face {
-			font-family: 'Roboto';
-			font-style: normal;
-			font-weight: 700;
-			src: local("Roboto Bold"), local("Roboto-Bold"), url(http://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2) format("woff2"), url(http://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff) format("woff");
-		}
-		/**/
-		
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-			color: #4f4f4f;
-			background-color: white;
-			background-image: url("http://freeseamlesstextures.com/images/10-brown-stucco-background-sml.jpg");
-			background-attachment: fixed;
-			font-family: 'Roboto';
-		}
-		
-		div,
-		input,
-		ul,
-		li,
-		h1,
-		h2,
-		h3,
-		p,
-		a,
-		i {
-			position: relative;
-			margin: 0;
-			padding: 0;
-		}
-		
-		h1,
-		h2,
-		h3,
-		h4 {
-			display: block;
-			clear: both;
-			text-align: left;
-			font-weight: bold;
-			font-family: 'Lato';
-		}
-		
-		h2 {
-			font-size: 3em;
-			margin: 0 0 .2em;
-			padding: 1em .5em .2em;
-			color: #526b7f;
-			background-color: rgba(8, 30, 48, 0.2);
-		}
-		
-		h3 {
-			font-size: 1.5em;
-			padding: .4em .8em;
-			color: #526b7f;
-			background-color: rgba(8, 30, 48, 0.2);
-			box-shadow: 0 0.1em 0.1em 0 rgba(8, 30, 48, 0.3);
-		}
-		h4 {
-			font-size: 1.2em;
-			margin: 0;
-			padding: .4em .4em .4em 1.2em;
-			color: #526b7f;
-			background-color: rgba(8, 30, 48, 0.2);
-		}
-		
-		p {
-			font-size: 1em;
-		}
-		
-		a {
-			display: block;
-			text-decoration: none;
-			color: #008CBC;
-			transition: all 500ms;
-		}
-		
-		a:visited {
-			color: #006689;
-		}
-		
-		a:active,
-		a:hover,
-		a:focus {
-			color: #009fd6;
-		}
-		
-		ul,
-		li {
-			display: block;
-			list-style-type: none;
-		}
-		
-		form {
-			max-width: 750px;
-			margin: 0 auto;
-		}
-		
-		input {
-			display: inline;
-			border-radius: 9em;
-			padding: .6em .8em;
-			margin: 1em auto;
-			font-size: 1.1em;
-		}
-		
-		input[type=text] {
-			width: 60%;
-			max-width: 650px;
-			box-shadow: 0 0 0.4em 0.4em #d3e7f8;
-		}
-		
-		input[type=submit] {
-			width: 5em;
-			cursor: pointer;
-		}
-		
-		fieldset {
-			border: #b9b9b9 1px solid;
-		}
-		
-		legend {
-			display: block;
-			text-align: center;
-			font-size: 1.1em;
-			margin: .5em auto;
-			padding: .4em .8em;
-			color: rgba(8, 30, 48, 0.5);
-			background-color: #F2F2F2;
-			box-shadow: 0 0 0.4em 0 black;
-		}
-		
-		i {
-			font-size: 1.5em;
-			margin: 0 .4em 0 0;
-		}
-		
-		#nav {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			z-index: 99;
-			background-color: rgba(8, 30, 48, 0.8);
-			border-bottom: #081E30 0.2em solid;
-			transition: all 500ms;
-		}
-		
-		#nav:hover {
-			background-color: #081E30;
-		}
-		
-		#nav ul,
-		#nav li {
-			float: left;
-		}
-		
-		#nav a,
-		#nav a:visited {
-			display: block;
-			margin: .2em;
-			padding: .4em;
-			color: #c1cdd7;
-		}
-		
-		#nav a:active,
-		#nav a:hover,
-		#nav a:focus {
-			color: white;
-			text-decoration: underline;
-		}
-		
-		#nav i {
-			margin: 0 .2em 0 0;
-		}
-		
-		#content {
-			text-align: center;
-			margin: 2.5em 0 0;
-			background-color: rgba(255, 255, 255, 0.9);
-		}
-		
-		.main {
-			width: 100%;
-			max-width: none;
-			padding: 0 0 2em;
-		}
-		
-		.sub {
-			width: 25%;
-			min-width: 20em;
-			max-width: 30em;
-			margin: 0 1em 1.4em;
-			vertical-align: top;
-			text-align: left;
-			background-color: rgba(255, 255, 255, 0.9);
-			border-left: 0.2em solid rgba(8, 30, 48, 0.5);
-		}
-		
-		.sub li {
-			margin: .1em 0;
-		}
-		
-		.sub a {
-			padding: .4em 1em;
-			border-bottom: #d3e7f8 1px solid;
-		}
-		
-		.sub a:active,
-		.sub a:hover,
-		.sub a:focus {
-			color: #008CBC;
-			background-color: rgba(8, 30, 48, 0.15);
-			border-color: #7cb8e9;
-		}
-		
-		.hilight ul {
-			display: table;
-			text-align: center;
-		}
-		
-		.hilight li {
-			display: inline;
-			margin: 1em .4em;
-		}
-		
-		.hilight a {
-			display: inline-block;
-			margin: .4em;
-			padding: .4em 1.2em;
-			text-decoration: none;
-			background-clip: padding-box;
-			border: .2em solid;
-			border-radius: 8em;
-			background-color: #008CBC;
-			color: white;
-		}
-		
-		.hilight a:visited {
-			background-color: #006689;
-		}
-		
-		.hilight a:active,
-		.hilight a:focus,
-		.hilight a:hover {
-			background-color: #00b2ef;
-		}
-		
-		.hilight a i {
-			display: block;
-			font-size: 1.8em;
-			margin: 0;
-		}
-		
-		input[type=submit]:hover,
-		.hilight a:hover {
-			box-shadow: 0px 0px 0.6em 0.1em rgba(23, 85, 135, 0.75);
-			transition: all 500ms;
-		}
-		
-		.masonry {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-		
-		@media (max-width: 650px) {
-			h2 {
-				font-size: 2.4em;
-				padding: 1em .2em .2em;
-			}
-			h3 {
-				font-size: 1.4em;
-				padding: .4em .6em;
-			}
-			input[type=text] {
-				width: 85%;
-			}
-			#nav {
-				background-color: rgba(8, 30, 48, 0.9);
-			}
-			#nav ul {
-				text-align: center;
-			}
-			#nav li,
-			#nav a {
-				float: none;
-				display: inline-block;
-			}
-			.sub {
-				padding: 0;
-				width: 40%;
-				min-width: 12em;
-				max-width: 20em;
-				margin: .5em auto;
-			}
-			.sub a {
-				padding: 1em .4em;
-			}
-			.hilight a {
-				width: 8em;
-			}
-			.hilight i {
-				font-size: 1.4em;
-			}
-		}
-	</style>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-</head>
+    <style>
+      @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        src: local("Lato Bold"), local("Lato-Bold"), url(http://fonts.gstatic.com/s/lato/v11/H2DMvhDLycM56KNuAtbJYA.woff2) format("woff2"), url(http://fonts.gstatic.com/s/lato/v11/wkfQbvfT_02e2IWO3yYueQ.woff) format("woff");
+      }
 
-<body>
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        src: local("Roboto"), local("Roboto-Regular"), url(http://fonts.gstatic.com/s/roboto/v15/CWB0XYA8bzo0kSThX0UTuA.woff2) format("woff2"), url(http://fonts.gstatic.com/s/roboto/v15/2UX7WLTfW3W8TclTUvlFyQ.woff) format("woff");
+      }
 
-	<div id="nav">
-		<ul></ul>
-	</div>
-	<div id="content">
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        src: local("Roboto Bold"), local("Roboto-Bold"), url(http://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2) format("woff2"), url(http://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff) format("woff");
+      }
+      /**/
 
-		<section id="search" class="main tab">
-			<h2><a href="#search"><i class="fa fa-search"></i>Search</a></h2>
-			<form method="get" action="http://www.google.com/search">
-				<img src="http://developers.google.com/_static/images/v2/developers-logo.png">
-				<input type="text" name="q" size="25" maxlength="255" value="Search Term" />
-				<input type="submit" value="Search" />
-			</form>
-		</section>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        color: #4f4f4f;
+        background-color: white;
+        background-image: url("http://freeseamlesstextures.com/images/10-brown-stucco-background-sml.jpg");
+        background-attachment: fixed;
+        font-family: 'Roboto';
+      }
 
-		<section id="test" class="main tab hilight">
-			<h2><a href="#test"><i class="fa fa-cogs"></i>Tests</a></h2>
+      div,
+      input,
+      ul,
+      li,
+      h1,
+      h2,
+      h3,
+      p,
+      a,
+      i {
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
 
-			<form id="domaintools">
+      h1,
+      h2,
+      h3,
+      h4 {
+        display: block;
+        clear: both;
+        text-align: left;
+        font-weight: bold;
+        font-family: 'Lato';
+      }
 
-				<fieldset>
-					<legend>Enter a domain to test...</legend>
-					<input id="checkurl" type="text" value="www.foo.com" size="64" />
-				</fieldset>
-				<fieldset>
-					<legend>...and select a test to run</legend>
-					<ul id="tests">
-						<li><a href="http://validator.w3.org/check?uri="><i class="fa fa-html5"></i>Validate HTML</a>
-						</li>
-						<li><a href="https://jigsaw.w3.org/css-validator/validator?uri="><i class="fa fa-css3"></i>Validate CSS</a>
-						</li>
-						<li><a href="https://developers.google.com/speed/pagespeed/insights/?url="><i class="fa fa-bolt"></i>PageSpeed</a>
-						</li>
-						<li><a href="http://www.google.com/webmasters/tools/richsnippets?q="><i class="fa fa-bullseye"></i>Rich Snippets</a>
-						</li>
-						<li><a href="https://ahrefs.com/site-explorer/overview/subdomains/?target="><i class="fa fa-hand-o-up"></i>ahrefs</a>
-						</li>
-						<li><a href="https://majestic.com/reports/site-explorer?folder=&IndexDataSource=F&q="><i class="fa fa-star-o"></i>Majestic Site Explorer</a>
-						</li>
-						<li><a href="https://moz.com/researchtools/ose/links?site="><i class="fa fa-compass"></i>Open Site Explorer</a>
-						</li>
-						<li><a href="https://domains.google.com/registrar?s="><i class="fa fa-power-off"></i>Domain Availability</a>
-						</li>
-						<li><a href="http://www.whois.com/whois/"><i class="fa fa-user-secret"></i>WhoIs</a>
-						</li>
-						<li><a href="http://www.downforeveryoneorjustme.com/"><i class="fa fa-chain-broken"></i>Down For Everyone?</a>
-						</li>
+      h2 {
+        font-size: 3em;
+        margin: 0 0 .2em;
+        padding: 1em .5em .2em;
+        color: #526b7f;
+        background-color: rgba(8, 30, 48, 0.2);
+      }
 
-					</ul>
-				</fieldset>
-			</form>
-		</section>
+      h3 {
+        font-size: 1.5em;
+        padding: .4em .8em;
+        color: #526b7f;
+        background-color: rgba(8, 30, 48, 0.2);
+        box-shadow: 0 0.1em 0.1em 0 rgba(8, 30, 48, 0.3);
+      }
+      h4 {
+        font-size: 1.2em;
+        margin: 0;
+        padding: .4em .4em .4em 1.2em;
+        color: #526b7f;
+        background-color: rgba(8, 30, 48, 0.2);
+      }
 
-		<section id="tools" class="main tab">
-			<h2><a href="#tools"><i class="fa fa-wrench"></i>Tools</a></h2>
+      p {
+        font-size: 1em;
+      }
 
-			<section class="sub">
-				<h3><i class="fa fa-picture-o"></i>Images</h3>
-				<ul>
-					<li><a href="http://www.favicon-generator.org/">Favicon Generator</a>
-					</li>
-					<li><a href="http://dataurl.net/">DataURL</a>
-					</li>
-					<li><a href="http://fortawesome.github.io/Font-Awesome/">Font-Awesome</a>
-					</li>
-					<li><a href="https://icomoon.io/app/#/select">Icomoon</a>
-					</li>
-					<li><a href="http://lorempixel.com/">LoremPixel</a>
-					</li>
-					<li><a href="http://www.photoshop.com/tools?wf=editor">Photoshop Express</a>
-					</li>
+      a {
+        display: block;
+        text-decoration: none;
+        color: #008CBC;
+        transition: all 500ms;
+      }
 
-				</ul>
-			</section>
+      a:visited {
+        color: #006689;
+      }
 
-			<section class="sub">
-				<h3><i class="fa fa-paint-brush"></i>Design</h3>
-				<ul>
-					<li><a href="http://css3please.com/">CSS3, Please</a>
-					</li>
-					<li><a href="https://color.adobe.com/explore/most-popular/">Kuler</a>
-					</li>
-					<li><a href="http://www.stylestats.org/">StyleStats</a>
-					</li>
-					<li>
-						<h4>Typography</h4>
-						<ul>
-							<li><a href="http://www.cssfontstack.com/" class="itool">CSS Font Stack</a>
-							</li>
-							<li><a href="http://www.google.com/fonts/">Google Fonts</a>
-							</li>
-							<li><a href="http://www.typegenius.com/">Type Genius</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</section>
+      a:active,
+      a:hover,
+      a:focus {
+        color: #009fd6;
+      }
 
-			<section class="sub">
-				<h3><i class="fa fa-chevron-right"></i>Javascript</h3>
-				<ul>
-					<li><a href="http://closure-compiler.appspot.com/">Closure Compiler</a>
-					</li>
-					<li><a href="http://jsfiddle.net/">JS Fiddle</a>
-					</li>
-					<li><a href="http://www.jslab.dk/tools.regex.php">Regex Generator</a>
-					</li>
-					<li>
-						<h4>CDN Sources</h4>
-						<ul>
-							<li><a href="https://developers.google.com/speed/libraries/devguide#libraries">Google</a>
-							</li>
-							<li><a href="http://www.asp.net/ajax/cdn">Microsoft</a>
-							</li>
-							<li><a href="https://cdnjs.com/">cdnjs</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</section>
+      ul,
+      li {
+        display: block;
+        list-style-type: none;
+      }
 
-			<section class="sub">
-				<h3><i class="fa fa-check"></i>Testing</h3>
-				<ul>
-					<li><a href="http://browsershots.org/">Browser Shots</a>
-					</li>
-				</ul>
-			</section>
+      form {
+        max-width: 750px;
+        margin: 0 auto;
+      }
 
-			<section class="sub">
-				<h3><i class="fa fa-search"></i>SEO</h3>
-				<ul>
-					<li><a href="https://adwords.google.com/ko/KeywordPlanner">Google Keyword Planner</a>
-					</li>
-					<li><a href="http://keywordtool.io/">Keyword Tool</a>
-					</li>
-				</ul>
-			</section>
+      input {
+        display: inline;
+        border-radius: 9em;
+        padding: .6em .8em;
+        margin: 1em auto;
+        font-size: 1.1em;
+      }
 
-		<section id="reference" class="main tab">
-			<h2><a href="#reference"><i class="fa fa-book"></i>Reference</a></h2>
+      input[type=text] {
+        width: 60%;
+        max-width: 650px;
+        box-shadow: 0 0 0.4em 0.4em #d3e7f8;
+      }
 
-			<section class="sub">
-				<h3><i class="fa fa-cogs"></i></h3>
-				<ul>
-					<li><a href="https://developer.mozilla.org/en-US/">Mozilla Developer Network</a>
-					</li>
-					<li><a href="https://msdn.microsoft.com/en-us/library/">Microsoft Developer Network</a>
-					</li>
-				</ul>
-				<ul>
-					<li><a href="http://jura.wi.mit.edu/bio/education/bioinfo/pages/scripts/unix_cheat_sheet.html">Unix Cheatsheet</a>
-					</li>
-					<li><a href="http://blog.stevex.net/powershell-cheatsheet/">Powershell Cheatsheet</a>
-					</li>
-					<li><a href="http://git-scm.com/docs">Git Cheatsheet</a>
-					</li>
-					<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a>
-					</li>
-				</ul>
-			</section>
+      input[type=submit] {
+        width: 5em;
+        cursor: pointer;
+      }
 
-			<section class="sub">
-				<h3>PHP</h3>
-				<ul>
-					<li><a href="http://php.net/manual/en/funcref.php">PHP</a>
-					</li>
-				</ul>
-				<ul>
-					<li><a href="http://symfony.com/doc/current/book/index.html">Symfony</a>
-					</li>
-					<li><a href="http://laravel.com/api/5.0/">Laravel</a>
-					</li>
-				</ul>
-				<ul>
-					<li><a href="https://api.drupal.org/api/drupal">Drupal</a>
-					</li>
-					<li><a href="https://api.joomla.org/">Joomla</a>
-					</li>
-					<li><a href="https://developer.wordpress.org/reference/">WordPress</a>
-					</li>
-				</ul>
-			</section>
+      fieldset {
+        border: #b9b9b9 1px solid;
+      }
 
-			<section class="sub">
-				<h3>Javascript</h3>
-				<ul>
-					<li><a href="http://api.jquery.com/">jQuery</a>
-					</li>
-					<li><a href="http://api.jqueryui.com/">jQuery-ui</a>
-					</li>
-				</ul>
-				<ul>
-					<li><a href="http://getbootstrap.com/">Bootstrap</a>
-					</li>
-					<li><a href="http://foundation.zurb.com/">Foundation</a>
-					</li>
-				</ul>
-				<ul>
-					<li><a href="https://docs.angularjs.org/api">Angular</a>
-					</li>
-					<li><a href="http://backbonejs.org/">Backbone</a>
-					</li>
-					<li><a href="http://underscorejs.org/">Underscore</a>
-					</li>
-					<li><a href="http://emberjs.com/api/">Ember</a>
-					</li>
-					<li><a href="http://docs.meteor.com/">Meteor</a>
-					</li>
-					<li><a href="http://facebook.github.io/react/docs/top-level-api.html">React</a>
-					</li>
-					<li><a href="http://nodejs.org/api/">Node</a>
-					</li>
-				</ul>
-			</section>
+      legend {
+        display: block;
+        text-align: center;
+        font-size: 1.1em;
+        margin: .5em auto;
+        padding: .4em .8em;
+        color: rgba(8, 30, 48, 0.5);
+        background-color: #F2F2F2;
+        box-shadow: 0 0 0.4em 0 black;
+      }
 
-			<section class="sub">
-				<h3>Styling</h3>
-				<ul>
-					<li><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">SASS</a>
-						<ul>
-							<li><a href="http://compass-style.org/reference/compass/">Compass</a>
-							</li>
-							<li><a href="http://bourbon.io/docs/">Bourbon</a>
-							</li>
-						</ul>
-					</li>
-					<li><a href="http://lesscss.org/features/">LESS</a>
-					</li>
-				</ul>
-			</section>
+      i {
+        font-size: 1.5em;
+        margin: 0 .4em 0 0;
+      }
 
-			<section class="sub">
-				<h3>Database</h3>
-				<ul>
-					<li><a href="http://dev.mysql.com/doc/">MySQL</a>
-					</li>
-					<li><a href="http://docs.mongodb.org/manual/">mongoDB</a>
-					</li>
-					<li><a href="http://www.postgresql.org/docs/">PostgreSQL</a>
-					</li>
-				</ul>
-			</section>
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 99;
+        background-color: rgba(8, 30, 48, 0.8);
+        border-bottom: #081E30 0.2em solid;
+        transition: all 500ms;
+      }
 
-			<section class="sub">
-				<h3>Etc.</h3>
-				<ul>
-					<li><a href="http://ruby-doc.org/core-2.2.0/">Ruby</a>
-						<ul>
-							<li><a href="http://api.rubyonrails.org/">Rails</a>
-							</li>
-						</ul>
-					</li>
-					<li><a href="https://docs.python.org/2/library/">Python</a>
-						<ul>
-							<li><a href="https://docs.djangoproject.com/en/1.7/">Django</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</section>
+      #nav:hover {
+        background-color: #081E30;
+      }
 
-		</section>
+      #nav ul,
+      #nav li {
+        float: left;
+      }
 
-		<section id="inspiration" class="main tab">
-			<h2><a href="#inspiration"><i class="fa fa-eye"></i>Inspiration</a></h2>
+      #nav a,
+      #nav a:visited {
+        display: block;
+        margin: .2em;
+        padding: .4em;
+        color: #c1cdd7;
+      }
 
-			<section class="sub">
-				<ul>
-					<li><a href="http://codepen.io/">Codepen</a>
-					</li>
-					<li><a href="http://cssdeck.com/">CSSDeck</a>
-					</li>
-					<li><a href="http://codyhouse.co/library/">Codyhouse</a>
-					</li>
-				</ul>
-			</section>
+      #nav a:active,
+      #nav a:hover,
+      #nav a:focus {
+        color: white;
+        text-decoration: underline;
+      }
 
-			<section class="sub">
-				<ul>
-					<li><a href="http://addyosmani.com/blog/">Addy Osmani</a>
-					</li>
-					<li><a href="http://davidwalsh.name/">David Walsh</a>
-					</li>
-					<li><a href="http://www.lukew.com/ff/">Luke Wroblewski</a>
-					</li>
-				</ul>
-			</section>
+      #nav i {
+        margin: 0 .2em 0 0;
+      }
 
-			<section class="sub">
-				<ul>
-					<li><a href="http://alistapart.com/">A List Apart</a>
-					</li>
-					<li><a href="http://tympanus.net/codrops/">Codrops</a>
-					</li>
-					<li><a href="https://scotch.io">Scotch</a>
-					</li>
-					<li><a href="http://www.sitepoint.com/">Sitepoint</a>
-					</li>
-					<li><a href="http://sixrevisions.com/">Six Revisiona</a>
-					</li>
-					<li><a href="http://www.smashingmagazine.com/">Smashing Magazine</a>
-					</li>
-					<li><a href="http://speckyboy.com/">Speckyboy</a>
-					</li>
-					<li><a href="http://www.webdesignerdepot.com/">Web Designer Depot</a>
-					</li>
-				</ul>
-			</section>
+      #content {
+        text-align: center;
+        margin: 2.5em 0 0;
+        background-color: rgba(255, 255, 255, 0.9);
+      }
 
-			<section class="sub">
-				<ul>
-					<li><a href="http://www.awwwards.com/">Awwwards</a>
-					</li>
-					<li><a href="https://www.thebestdesigns.com/">The Best Designs</a>
-					</li>
-					<li><a href="http://www.webcreme.com/">Web Creme</a>
-					</li>
-				</ul>
-			</section>
+      .main {
+        width: 100%;
+        max-width: none;
+        padding: 0 0 2em;
+      }
 
-		</section>
+      .sub {
+        width: 25%;
+        min-width: 20em;
+        max-width: 30em;
+        margin: 0 1em 1.4em;
+        vertical-align: top;
+        text-align: left;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-left: 0.2em solid rgba(8, 30, 48, 0.5);
+      }
 
-		<!-- /#content -->
-	</div>
+      .sub li {
+        margin: .1em 0;
+      }
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      .sub a {
+        padding: .4em 1em;
+        border-bottom: #d3e7f8 1px solid;
+      }
 
-	<script>
-		(function ($) {
+      .sub a:active,
+      .sub a:hover,
+      .sub a:focus {
+        color: #008CBC;
+        background-color: rgba(8, 30, 48, 0.15);
+        border-color: #7cb8e9;
+      }
 
-			(function ui() {
-				$('input[type=text]').on('focus', function () {
-					if (this.value == this.defaultValue) {
-						this.value = '';
-					}
-				});
+      .hilight ul {
+        display: table;
+        text-align: center;
+      }
 
-				$('.main').each(function () {
-					var t = $(this);
-					var title = t.find(' > h2');
-					$('#nav').find('ul').append('<li>' + title.html() + '</li>');
-					title.find('i').unwrap();
-					t.find('section').wrapAll('<div class="masonry" />');
-				});
+      .hilight li {
+        display: inline;
+        margin: 1em .4em;
+      }
 
-			})();
+      .hilight a {
+        display: inline-block;
+        margin: .4em;
+        padding: .4em 1.2em;
+        text-decoration: none;
+        background-clip: padding-box;
+        border: .2em solid;
+        border-radius: 8em;
+        background-color: #008CBC;
+        color: white;
+      }
 
-			(function domaintools() {
-				var v = $('#domaintools');
-				var a = v.find('a');
+      .hilight a:visited {
+        background-color: #006689;
+      }
 
-				a.each(function () {
-					$(this).data('link', $(this).attr('href'));
-				});
+      .hilight a:active,
+      .hilight a:focus,
+      .hilight a:hover {
+        background-color: #00b2ef;
+      }
 
-				updatelink();
-				v.find('input').on('keyup', updatelink);
+      .hilight a i {
+        display: block;
+        font-size: 1.8em;
+        margin: 0;
+      }
 
-				function updatelink() {
-					a.each(function () {
-						var blink = $(this).data('link');
-						var url = v.find('input').val();
+      input[type=submit]:hover,
+      .hilight a:hover {
+        box-shadow: 0px 0px 0.6em 0.1em rgba(23, 85, 135, 0.75);
+        transition: all 500ms;
+      }
 
-						$(this).attr('href', blink + url);
-					});
-				}
-			})();
+      .masonry {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-		})(jQuery);
-	</script>
-</body>
+      @media (max-width: 650px) {
+        h2 {
+          font-size: 2.4em;
+          padding: 1em .2em .2em;
+        }
+        h3 {
+          font-size: 1.4em;
+          padding: .4em .6em;
+        }
+        input[type=text] {
+          width: 85%;
+        }
+        #nav {
+          background-color: rgba(8, 30, 48, 0.9);
+        }
+        #nav ul {
+          text-align: center;
+        }
+        #nav li,
+        #nav a {
+          float: none;
+          display: inline-block;
+        }
+        .sub {
+          padding: 0;
+          width: 40%;
+          min-width: 12em;
+          max-width: 20em;
+          margin: .5em auto;
+        }
+        .sub a {
+          padding: 1em .4em;
+        }
+        .hilight a {
+          width: 8em;
+        }
+        .hilight i {
+          font-size: 1.4em;
+        }
+      }
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+
+    <div id="nav">
+      <ul></ul>
+    </div>
+    <div id="content">
+
+      <section id="search" class="main tab">
+        <h2><a href="#search"><i class="fa fa-search"></i>Search</a></h2>
+        <form method="get" action="http://www.google.com/search">
+          <img src="http://developers.google.com/_static/images/v2/developers-logo.png">
+          <input type="text" name="q" size="25" maxlength="255" value="Search Term" />
+          <input type="submit" value="Search" />
+        </form>
+      </section>
+
+      <section id="test" class="main tab hilight">
+        <h2><a href="#test"><i class="fa fa-cogs"></i>Tests</a></h2>
+
+        <form id="domaintools">
+
+          <fieldset>
+            <legend>Enter a domain to test...</legend>
+            <input id="checkurl" type="text" value="www.foo.com" size="64" />
+          </fieldset>
+          <fieldset>
+            <legend>...and select a test to run</legend>
+            <ul id="tests">
+              <li><a href="http://validator.w3.org/check?uri="><i class="fa fa-html5"></i>Validate HTML</a>
+              </li>
+              <li><a href="https://jigsaw.w3.org/css-validator/validator?uri="><i class="fa fa-css3"></i>Validate CSS</a>
+              </li>
+              <li><a href="https://developers.google.com/speed/pagespeed/insights/?url="><i class="fa fa-bolt"></i>PageSpeed</a>
+              </li>
+              <li><a href="http://www.google.com/webmasters/tools/richsnippets?q="><i class="fa fa-bullseye"></i>Rich Snippets</a>
+              </li>
+              <li><a href="https://ahrefs.com/site-explorer/overview/subdomains/?target="><i class="fa fa-hand-o-up"></i>ahrefs</a>
+              </li>
+              <li><a href="https://majestic.com/reports/site-explorer?folder=&IndexDataSource=F&q="><i class="fa fa-star-o"></i>Majestic Site Explorer</a>
+              </li>
+              <li><a href="https://moz.com/researchtools/ose/links?site="><i class="fa fa-compass"></i>Open Site Explorer</a>
+              </li>
+              <li><a href="https://www.namecheap.com/domains/registration/results.aspx?domain="><i class="fa fa-power-off"></i>Domain Availability</a></li>
+              </li>
+              <li><a href="http://www.whois.com/whois/"><i class="fa fa-user-secret"></i>WhoIs</a>
+              </li>
+              <li><a href="http://www.downforeveryoneorjustme.com/"><i class="fa fa-chain-broken"></i>Down For Everyone?</a>
+              </li>
+
+            </ul>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="tools" class="main tab">
+        <h2><a href="#tools"><i class="fa fa-wrench"></i>Tools</a></h2>
+
+        <section class="sub">
+          <h3><i class="fa fa-picture-o"></i>Images</h3>
+          <ul>
+            <li><a href="http://www.favicon-generator.org/">Favicon Generator</a>
+            </li>
+            <li><a href="http://dataurl.net/">DataURL</a>
+            </li>
+            <li><a href="http://fortawesome.github.io/Font-Awesome/">Font-Awesome</a>
+            </li>
+            <li><a href="https://icomoon.io/app/#/select">Icomoon</a>
+            </li>
+            <li><a href="http://lorempixel.com/">LoremPixel</a>
+            </li>
+            <li><a href="http://www.photoshop.com/tools?wf=editor">Photoshop Express</a>
+            </li>
+
+          </ul>
+        </section>
+
+        <section class="sub">
+          <h3><i class="fa fa-paint-brush"></i>Design</h3>
+          <ul>
+            <li><a href="http://css3please.com/">CSS3, Please</a>
+            </li>
+            <li><a href="https://color.adobe.com/explore/most-popular/">Kuler</a>
+            </li>
+            <li><a href="http://www.stylestats.org/">StyleStats</a>
+            </li>
+            <li>
+              <h4>Typography</h4>
+              <ul>
+                <li><a href="http://www.cssfontstack.com/" class="itool">CSS Font Stack</a>
+                </li>
+                <li><a href="http://www.google.com/fonts/">Google Fonts</a>
+                </li>
+                <li><a href="http://www.typegenius.com/">Type Genius</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sub">
+          <h3><i class="fa fa-chevron-right"></i>Javascript</h3>
+          <ul>
+            <li><a href="http://closure-compiler.appspot.com/">Closure Compiler</a>
+            </li>
+            <li><a href="http://jsfiddle.net/">JS Fiddle</a>
+            </li>
+            <li><a href="http://www.jslab.dk/tools.regex.php">Regex Generator</a>
+            </li>
+            <li>
+              <h4>CDN Sources</h4>
+              <ul>
+                <li><a href="https://developers.google.com/speed/libraries/devguide#libraries">Google</a>
+                </li>
+                <li><a href="http://www.asp.net/ajax/cdn">Microsoft</a>
+                </li>
+                <li><a href="https://cdnjs.com/">cdnjs</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sub">
+          <h3><i class="fa fa-check"></i>Testing</h3>
+          <ul>
+            <li><a href="http://browsershots.org/">Browser Shots</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sub">
+          <h3><i class="fa fa-search"></i>SEO</h3>
+          <ul>
+            <li><a href="https://adwords.google.com/ko/KeywordPlanner">Google Keyword Planner</a>
+            </li>
+            <li><a href="http://keywordtool.io/">Keyword Tool</a>
+            </li>
+          </ul>
+        </section>
+
+        <section id="reference" class="main tab">
+          <h2><a href="#reference"><i class="fa fa-book"></i>Reference</a></h2>
+
+          <section class="sub">
+            <h3><i class="fa fa-cogs"></i></h3>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/">Mozilla Developer Network</a>
+              </li>
+              <li><a href="https://msdn.microsoft.com/en-us/library/">Microsoft Developer Network</a>
+              </li>
+            </ul>
+            <ul>
+              <li><a href="http://jura.wi.mit.edu/bio/education/bioinfo/pages/scripts/unix_cheat_sheet.html">Unix Cheatsheet</a>
+              </li>
+              <li><a href="http://blog.stevex.net/powershell-cheatsheet/">Powershell Cheatsheet</a>
+              </li>
+              <li><a href="http://git-scm.com/docs">Git Cheatsheet</a>
+              </li>
+              <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <h3>PHP</h3>
+            <ul>
+              <li><a href="http://php.net/manual/en/funcref.php">PHP</a>
+              </li>
+            </ul>
+            <ul>
+              <li><a href="http://symfony.com/doc/current/book/index.html">Symfony</a>
+              </li>
+              <li><a href="http://laravel.com/api/5.0/">Laravel</a>
+              </li>
+            </ul>
+            <ul>
+              <li><a href="https://api.drupal.org/api/drupal">Drupal</a>
+              </li>
+              <li><a href="https://api.joomla.org/">Joomla</a>
+              </li>
+              <li><a href="https://developer.wordpress.org/reference/">WordPress</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <h3>Javascript</h3>
+            <ul>
+              <li><a href="http://api.jquery.com/">jQuery</a>
+              </li>
+              <li><a href="http://api.jqueryui.com/">jQuery-ui</a>
+              </li>
+            </ul>
+            <ul>
+              <li><a href="http://getbootstrap.com/">Bootstrap</a>
+              </li>
+              <li><a href="http://foundation.zurb.com/">Foundation</a>
+              </li>
+            </ul>
+            <ul>
+              <li><a href="https://docs.angularjs.org/api">Angular</a>
+              </li>
+              <li><a href="http://backbonejs.org/">Backbone</a>
+              </li>
+              <li><a href="http://underscorejs.org/">Underscore</a>
+              </li>
+              <li><a href="http://emberjs.com/api/">Ember</a>
+              </li>
+              <li><a href="http://docs.meteor.com/">Meteor</a>
+              </li>
+              <li><a href="http://facebook.github.io/react/docs/top-level-api.html">React</a>
+              </li>
+              <li><a href="http://nodejs.org/api/">Node</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <h3>Styling</h3>
+            <ul>
+              <li><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">SASS</a>
+                <ul>
+                  <li><a href="http://compass-style.org/reference/compass/">Compass</a>
+                  </li>
+                  <li><a href="http://bourbon.io/docs/">Bourbon</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="http://lesscss.org/features/">LESS</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <h3>Database</h3>
+            <ul>
+              <li><a href="http://dev.mysql.com/doc/">MySQL</a>
+              </li>
+              <li><a href="http://docs.mongodb.org/manual/">mongoDB</a>
+              </li>
+              <li><a href="http://www.postgresql.org/docs/">PostgreSQL</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <h3>Etc.</h3>
+            <ul>
+              <li><a href="http://ruby-doc.org/core-2.2.0/">Ruby</a>
+                <ul>
+                  <li><a href="http://api.rubyonrails.org/">Rails</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="https://docs.python.org/2/library/">Python</a>
+                <ul>
+                  <li><a href="https://docs.djangoproject.com/en/1.7/">Django</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+        </section>
+
+        <section id="inspiration" class="main tab">
+          <h2><a href="#inspiration"><i class="fa fa-eye"></i>Inspiration</a></h2>
+
+          <section class="sub">
+            <ul>
+              <li><a href="http://codepen.io/">Codepen</a>
+              </li>
+              <li><a href="http://cssdeck.com/">CSSDeck</a>
+              </li>
+              <li><a href="http://codyhouse.co/library/">Codyhouse</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <ul>
+              <li><a href="http://addyosmani.com/blog/">Addy Osmani</a>
+              </li>
+              <li><a href="http://davidwalsh.name/">David Walsh</a>
+              </li>
+              <li><a href="http://www.lukew.com/ff/">Luke Wroblewski</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <ul>
+              <li><a href="http://alistapart.com/">A List Apart</a>
+              </li>
+              <li><a href="http://tympanus.net/codrops/">Codrops</a>
+              </li>
+              <li><a href="https://scotch.io">Scotch</a>
+              </li>
+              <li><a href="http://www.sitepoint.com/">Sitepoint</a>
+              </li>
+              <li><a href="http://sixrevisions.com/">Six Revisiona</a>
+              </li>
+              <li><a href="http://www.smashingmagazine.com/">Smashing Magazine</a>
+              </li>
+              <li><a href="http://speckyboy.com/">Speckyboy</a>
+              </li>
+              <li><a href="http://www.webdesignerdepot.com/">Web Designer Depot</a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <ul>
+              <li><a href="http://www.awwwards.com/">Awwwards</a>
+              </li>
+              <li><a href="https://www.thebestdesigns.com/">The Best Designs</a>
+              </li>
+              <li><a href="http://www.webcreme.com/">Web Creme</a>
+              </li>
+            </ul>
+          </section>
+
+        </section>
+
+        <section id="media" class="main tab">
+          <h2><a href="#media"><i class="fa fa-volume-up"></i>Media</a></h2>
+
+          <section class="sub">
+            <h3>Radio</h3>
+            <ul>
+              <li><a href="http://radio.securenetsystems.net/v5/KTKE">KTKE - Truckee</a></li>
+              <li><a href="http://www.kexp.org/player/LivePlayer.aspx">KEXP - Seattle</a></li>
+              <li><a href=""></a></li>
+              <li><a href="http://www.npr.org/player/v2/mediaPlayer.html?action=3&t=live1&islist=false">NPR</a></li>
+            </ul>
+          </section>
+
+          <section class="sub">
+            <h3>Playlists</h3>
+            <ul>
+              <li><a href="" data-embed="">Aloe Blacc</a></li>
+              <li><a href="http://youtu.be/rVeMiVU77wo?list=RDrVeMiVU77wo"
+                     data-embed="https://www.youtube.com/embed/rVeMiVU77wo?list=RDrVeMiVU77wo">Alt-J</a></li>
+              <li><a href="" data-embed="">Bassnectar</a></li>
+              <li><a href="" data-embed="">The Beautiful Girls</a></li>
+              <li><a href="" data-embed="">Chinese Man</a></li>
+              <li><a href="" data-embed="">The Crystal Method</a></li>
+              <li><a href="" data-embed="">EdiT</a></li>
+              <li><a href="" data-embed="">Gramatik</a></li>
+              <li><a href="" data-embed="">Jack Johnson</a></li>
+              <li><a href="" data-embed="">John Butler Trio</a></li>
+              <li><a href="" data-embed="">Massive Attack</a></li>
+              <li><a href="" data-embed="">Outkast</a></li>
+              <li><a href="" data-embed="">Pretty Lights</a></li>
+              <li><a href="" data-embed="">Radiohead</a></li>
+              <li><a href="" data-embed="">Rage Against the Machine</a></li>
+              <li><a href="http://youtu.be/AnG6Hkr0QUs?list=RDAnG6Hkr0QUs"
+                     data-embed="https://www.youtube.com/embed/AnG6Hkr0QUs?list=RDAnG6Hkr0QUs">
+                  Rising Appalachia</a></li>
+              <li><a href="" data-embed="">Santana</a></li>
+              <li><a href="" data-embed="">Shook Twins</a></li>
+              <li><a href="" data-embed="">Slightly Stoopid</a></li>
+              <li><a href="" data-embed="">Soul Coughing</a></li>
+              <li><a href="" data-embed="">Sublime</a></li>
+              <li><a href="" data-embed="">Thievery Corporation</a></li>
+              <li><a href="" data-embed="">White Stripes</a></li>
+              <li><a href="" data-embed="">Widespread Panic</a></li>
+              <li><a href="" data-embed="">Xavier Rudd</a></li>
+            </ul>s
+          </section>
+          <section class="sub">
+            <ul>
+              <!--<li><a href="">Chinese Man</a></li>-->
+            </ul>
+          </section>
+
+        </section>
+        <!-- /#content -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script>
+      (function ($) {
+
+        (function ui() {
+          $('input[type=text]').on('focus', function () {
+            if (this.value == this.defaultValue) {
+              this.value = '';
+            }
+          });
+
+          $('.main').each(function () {
+            var t = $(this);
+            var title = t.find(' > h2');
+            $('#nav').find('ul').append('<li>' + title.html() + '</li>');
+            title.find('i').unwrap();
+            t.find('section').wrapAll('<div class="masonry" />');
+          });
+
+        })();
+
+        (function domaintools() {
+          var v = $('#domaintools');
+          var a = v.find('a');
+
+          a.each(function () {
+            $(this).data('link', $(this).attr('href'));
+          });
+
+          updatelink();
+          v.find('input').on('keyup', updatelink);
+
+          function updatelink() {
+            a.each(function () {
+              var blink = $(this).data('link');
+              var url = v.find('input').val();
+
+              $(this).attr('href', blink + url);
+            });
+          }
+        })();
+
+      })(jQuery);
+    </script>
+  </body>
 
 </html>
